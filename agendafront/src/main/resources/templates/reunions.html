@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:400,300,600" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" />
+  <title>Meeting Planner</title>
+</head>
+<body>
+  <div class="reunionstarterlist" th:unless="${#lists.isEmpty(reunions)}">
+    
+  <h2>Meeting Planner</h2>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Nom Réunion</th>
+        <th>Créneau Horaire</th>
+        <th>Reunion - Type</th>
+        <th>Reunion - Ecran</th>
+        <th>Reunion - Pieuvre</th>
+        <th>Reunion - Webcam</th>
+        <th>Reunion - Tableau</th>                                
+        <th>Nombre personnes convoquées</th>
+        <th>Salle</th>
+        <th>Salle - capacite à 70%</th>
+        <th>Salle - ecran</th>
+        <th>Salle - pieuvre</th>
+        <th>Salle - webcam</th>
+        <th>Salle - tableau</th>
+        <th>Equipement Additionnel réservé</th>                                
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="sb : ${reunions}">
+        <td th:text=${{sb.nomReunion}}></td>
+        <td th:text="${{sb.heure}}">Heure</td>
+        <td th:text="${{sb.typeReunion.nom}}">Type de Réunion</td>
+        <td th:text="${{sb.typeReunion.ecran ? 'OUI':'NON'}}">Type de Réunion</td>
+        <td th:text="${{sb.typeReunion.pieuvre ? 'OUI':'NON'}}">Type de Réunion</td>
+        <td th:text="${{sb.typeReunion.webcam ? 'OUI':'NON'}}">Type de Réunion</td>
+        <td th:text="${{sb.typeReunion.tableau ? 'OUI':'NON'}}">Type de Réunion</td>                                
+        <td th:text="${{sb.nombrePersonnesConvoques}}">Personnes</td>
+        <td th:text="${{sb.salle != null ? sb.salle.nom : '--'}}">Salle</td>
+        <td th:text="${{sb.salle != null ? sb.salle.capacite70 :  '--'}}">Salle</td>
+        <td th:text="${{sb.salle != null ? (sb.salle.ecran ?  'OUI': 'NON') : '--'}}">Salle</td>
+        <td th:text="${{sb.salle != null ? (sb.salle.pieuvre ?  'OUI': 'NON') : '--'}}">Salle</td>
+        <td th:text="${{sb.salle != null ? (sb.salle.webcam ?  'OUI': 'NON') : '--'}}">Salle</td>
+        <td th:text="${{sb.salle != null ? (sb.salle.tableau ?  'OUI': 'NON') : '--'}}">Salle</td>
+        <td th:text=${{sb.equipementAdditionnel}}>Salle</td>                
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
